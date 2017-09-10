@@ -1,0 +1,31 @@
+.my-heading {
+  color: #666666;
+}
+
+.project-name {
+  text-transform: capitalize;
+}
+
+.total-projects {
+  font-size: 1.2em;
+}
+
+.delete-project-btn, .edit-project-btn {
+  float: right;
+  cursor: pointer;
+  margin-top: 10px;
+  margin-left: 5px;
+}
+
+.completed {
+  float: right;
+}
+
+.checked-li {
+  text-decoration: line-through;
+  color: #ccc;
+}
+
+.float-right{
+  float: right;
+}

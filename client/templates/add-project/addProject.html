@@ -1,0 +1,54 @@
+<template name="addProject">
+  {{#if currentUser}}
+    <div class="row">
+    <div class="col-sm-offset-2 col-sm-8">
+    <h3 class="text-center">Add Project</h3>
+    <hr>
+    <br>
+    <form class="add-project form-horizontal" enctype="multipart/form-data">
+
+      <div class="form-group">
+        <label for="projectName" class="col-sm-4">Project Name:</label>
+        <div class="col-sm-8">
+          <input type="text" name="projectName" id="projectName" class="form-control">
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="strategicResource" class="col-sm-4">Strategic Resources: <small>(for multiple selection, press 'Ctrl')</small></label>
+        <div class="col-sm-8">
+          <select multiple class="form-control " id="strategicResource">
+            {{#each users}}
+              {{#if username}}
+                <option>{{username}}</option>
+              {{/if}}
+            {{/each}}
+          </select>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="technicalResource" class="col-sm-4">Technical Resources: <small>(for multiple selection, press 'Ctrl')</small></label>
+        <div class="col-sm-8">
+          <select multiple class="form-control " id="technicalResource">
+            {{#each users}}
+              {{#if username}}
+                <option>{{username}}</option>
+              {{/if}}
+            {{/each}}
+          </select>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <div class="col-sm-offset-4 col-sm-8">
+          <button style="width:100%" type="submit" class="btn btn-success">Add Project</button>
+        </div>
+      </div>
+
+    </form>
+  </div>
+  <div class="col-sm-2"></div>
+</div>
+  {{/if}}
+</template>

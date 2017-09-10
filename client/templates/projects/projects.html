@@ -1,0 +1,42 @@
+<template name="projects">
+  <div class="row">
+    <div class="col-md-offset-2 col-md-8">
+      {{#if currentUser}}
+        <div class="row">
+          <h3 style="margin-top:10px;" class="my-heading col-md-9 col-sm-9">Projects List - Total Projects: <span class="badge">{{allProjects}}</span></h3>
+          <a href="{{pathFor 'addProject'}}" style="margin-top: 10px;" class="btn btn-primary col-md-3 col-sm-3">Add New Project</a>
+        </div>
+        <hr>
+
+        {{#each projects}}
+          <div class="row">
+            <div class="col-sm-9">
+              <h4 class="text-capitalize">{{name}} -
+                {{#if projectStatus status}}
+                  <span class="label label-warning">{{status}}</span>
+                {{else}}
+                  <span class="label label-success">{{status}}</span>
+                {{/if}}
+              </h4>
+              <small> Created On: {{createdAt}}</small>
+            </div>
+            <div class="col-sm-3 text-right">
+              <a href="/project/{{_id}}" class="btn btn-default show-project-btn show-project">
+                <span class="glyphicon glyphicon-file" aria-hidden="true"></span> Show
+              </a>
+            </div>
+          </div>
+          <hr>
+        {{/each}}
+
+      {{else}}
+        <div class="jumbotron">
+          <div class="container">
+            <h1>No Projects...</h1>
+            <p>Sign-in to Add &amp; Check Projects!</p>
+          </div>
+        </div>
+      {{/if}}
+    </div>
+  </div>
+</template>
