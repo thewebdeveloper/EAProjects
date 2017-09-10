@@ -26,7 +26,7 @@ Template.project.helpers({
       return false;
     }
   },
-  
+
   // For styling purposes, if pending => label will be yellow, else green
   resourceStatus: function(status) {
     if (status == 'Pending') {
@@ -71,10 +71,23 @@ Template.project.events({
     var projectId = Router.current().params._id;
     var id = this.id;
     var myStatus = document.getElementById(id).value;
-    // Updating Resource status
-    Meteor.call('resources.updateResourceStatus', projectId, id, myStatus);
-    // Notifying the User
-    Bert.alert( 'Your Task Status has been Completed Successfully! An email notification will be sent to you', 'success', 'growl-top-right' );
+
+    // Do these actions only if the status == 'Completed'
+    if(myStatus == 'Completed') {
+      // Updating Resource status
+      Meteor.call('resources.updateResourceStatus', projectId, id, myStatus);
+      // Notifying the User on the UI
+      Bert.alert( 'Your Task Status has been Completed Successfully! An email notification will be sent to you', 'success', 'growl-top-right' );
+
+      // Setting up the notification email variables.
+      var to = 'abdullah_altamimi@live.com';
+      var from = 'abdullah.webdeveloper@gmail.com';
+      var subject = 'Email From EAProjects';
+      var text = 'Testing the resource status has been updated';
+      // Send the notification email
+      Meteor.call('sendEmail', to, from, subject, text);
+    }
+
     return false;
   }
 
